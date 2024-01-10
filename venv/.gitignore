@@ -1,5 +1,5 @@
-config/.env
 venv/pyvenv.cfg
+config/.env
 venv/lib/site-packages/distutils-precedence.pth
 venv/lib/site-packages/_distutils_hack/__init__.py
 venv/lib/site-packages/_distutils_hack/override.py
