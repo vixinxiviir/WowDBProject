@@ -12,8 +12,9 @@ def getWowCategories(clientId, clientSecret):
         outfile.write(rawJson)
 
 
-config = dotenv_values("config/.env")
+config = dotenv_values("venv/config/.env")
 clientId = config["CLIENT_ID"]
 clientSecret = config["CLIENT_SECRET"]
 
-# getWowCategories(clientId, clientSecret)
+getWowCategories(clientId, clientSecret)
+print("Request successful!")
