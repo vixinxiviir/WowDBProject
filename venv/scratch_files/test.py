@@ -17,8 +17,4 @@ clientId = config["CLIENT_ID"]
 clientSecret = config["CLIENT_SECRET"]
 
 getWowCategories(clientId, clientSecret)
-<<<<<<< HEAD
 print("Request successful!")
-=======
-print("Request success!")
->>>>>>> baaa7e9362a97c4b89e5724f6b92e04f0fdfce6a
