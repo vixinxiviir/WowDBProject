@@ -16,4 +16,5 @@ config = dotenv_values("config/.env")
 clientId = config["CLIENT_ID"]
 clientSecret = config["CLIENT_SECRET"]
 
-# getWowCategories(clientId, clientSecret)
+getWowCategories(clientId, clientSecret)
+print("Request success!")
