@@ -1,0 +1,31 @@
+{
+    "_links": {
+        "self": {
+            "href": "https://us.api.blizzard.com/data/wow/achievement/575?namespace=static-10.2.0_51825-us"
+        }
+    },
+    "id": 575,
+    "category": {
+        "key": {
+            "href": "https://us.api.blizzard.com/data/wow/achievement-category/14922?namespace=static-10.2.0_51825-us"
+        },
+        "name": "Lich King Raid",
+        "id": 14922
+    },
+    "name": "Kel'Thuzad's Defeat (25 player)",
+    "description": "Defeat Kel'Thuzad in Naxxramas in 25-player mode.",
+    "points": 10,
+    "is_account_wide": false,
+    "criteria": {
+        "id": 954,
+        "description": "Defeat Kel'Thuzad in Naxxramas in 25-player mode.",
+        "amount": 0
+    },
+    "media": {
+        "key": {
+            "href": "https://us.api.blizzard.com/data/wow/media/achievement/575?namespace=static-10.2.0_51825-us"
+        },
+        "id": 575
+    },
+    "display_order": 16
+}
