@@ -8,6 +8,7 @@ def getWowAchievementCategoriesIndex(clientId, clientSecret):
     rawJson = json.dumps(categories, indent=4)
     with open("venv/raw_jsons/wowAchievementCategoriesIndex.json", "w") as outfile:
         outfile.write(rawJson)
+    return(rawJson)
 
 def getWowAchievementCategory(clientId, clientSecret, categoryId):
     apiClient = BlizzardApi(client_id=clientId, client_secret=clientSecret)
@@ -15,6 +16,7 @@ def getWowAchievementCategory(clientId, clientSecret, categoryId):
     rawJson = json.dumps(categories, indent=4)
     with open("venv/raw_jsons/wowAchievementCategories%s.json" % categoryId, "w") as outfile:
         outfile.write(rawJson)
+    return(rawJson)
 
 def getWowAchievementIndex(clientId, clientSecret):
     apiClient = BlizzardApi(client_id=clientId, client_secret=clientSecret)
@@ -22,6 +24,7 @@ def getWowAchievementIndex(clientId, clientSecret):
     rawJson = json.dumps(categories, indent=4)
     with open("venv/raw_jsons/wowAchievementIndex.json", "w") as outfile:
         outfile.write(rawJson)
+    return(rawJson)
 
 def getWowAchievement(clientId, clientSecret, achievmentId):
     apiClient = BlizzardApi(client_id=clientId, client_secret=clientSecret)
@@ -29,3 +32,4 @@ def getWowAchievement(clientId, clientSecret, achievmentId):
     rawJson = json.dumps(categories, indent=4)
     with open("venv/raw_jsons/wowAchievement%s.json" % achievmentId, "w") as outfile:
         outfile.write(rawJson)
+    return(rawJson)
