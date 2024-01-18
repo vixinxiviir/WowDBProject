@@ -6,7 +6,7 @@ from blizzardapi import BlizzardApi
 from dotenv import dotenv_values
 
 
-
+# This is a test line for SmartGit
 
 i = 1
 finalTable = pd.DataFrame()
