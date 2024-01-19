@@ -1,0 +1,11 @@
+{
+    "_links": {
+        "self": {
+            "href": "https://us.api.blizzard.com/data/wow/item-class/17/item-subclass/0?namespace=static-10.2.5_52554-us"
+        }
+    },
+    "class_id": 17,
+    "subclass_id": 0,
+    "display_name": "BattlePet",
+    "verbose_name": "BattlePet"
+}

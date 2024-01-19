@@ -1,0 +1,22 @@
+{
+    "_links": {
+        "self": {
+            "href": "https://us.api.blizzard.com/data/wow/creature-family/127?namespace=static-10.2.5_52554-us"
+        }
+    },
+    "id": 127,
+    "name": "Rodent",
+    "specialization": {
+        "key": {
+            "href": "https://us.api.blizzard.com/data/wow/playable-specialization/79?namespace=static-10.2.5_52554-us"
+        },
+        "name": "Cunning",
+        "id": 79
+    },
+    "media": {
+        "key": {
+            "href": "https://us.api.blizzard.com/data/wow/media/creature-family/127?namespace=static-10.2.5_52554-us"
+        },
+        "id": 127
+    }
+}

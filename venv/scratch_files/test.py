@@ -1,27 +1,43 @@
 
 import json
+import pandas as pd
+import requests
 from blizzardapi import BlizzardApi
 from dotenv import dotenv_values
 
 
-def getWowCategoriesIndex(clientId, clientSecret):
-    apiClient = BlizzardApi(client_id=clientId, client_secret=clientSecret)
-    categories = apiClient.wow.game_data.get_achievement_categories_index(region="us", locale="en_US")
-    rawJson = json.dumps(categories, indent=4)
-    with open("wowCategoriesIndex.json", "w") as outfile:
-        outfile.write(rawJson)
+# This is a test line for SmartGit
 
-def getWowCategory(clientId, clientSecret, categoryId):
-    apiClient = BlizzardApi(client_id=clientId, client_secret=clientSecret)
-    categories = apiClient.wow.game_data.get_achievement_category(region="us", locale="en_US", achievement_category_id=categoryId)
-    rawJson = json.dumps(categories, indent=4)
-    with open("wowCategories%s.json" % categoryId, "w") as outfile:
-        outfile.write(rawJson)
+i = 1
+finalTable = pd.DataFrame()
+while True:
 
-config = dotenv_values("venv/config/.env")
-clientId = config["CLIENT_ID"]
-clientSecret = config["CLIENT_SECRET"]
+    url ='https://us.api.blizzard.com/data/wow/search/spell?namespace=static-us&_pageSize=1000&id=[%s,]&name.en_US=&orderby=id&_page=1&access_token=USmqlGVzEEvrmtg0qQdVGeBR1zXQ3twvGC' % i
+    request = requests.get(url=url)
+    rawJson = json.dumps(request.json())
+    itemPage = pd.read_json(rawJson)
+    finalTable = pd.concat([finalTable, itemPage])
+    print(len(finalTable))
+    try:
+        i = itemPage['results'][999]['data']['id']
+    except:
+        break
+finalTable.to_excel('~/Documents/wowApiSpells.xlsx')
 
-getWowCategoriesIndex(clientId, clientSecret)
-getWowCategory(clientId, clientSecret, categoryId=14922)
+
+# url ='https://us.api.blizzard.com/data/wow/search/creature?namespace=static-us&name.en_US=&orderby=id:desc&_page=%s&access_token=USiPyLgZJdM8BjsDShmlXdkOhfBhagU5D0' % i
+# request = requests.get(url=url)
+# rawJson = json.dumps(request.json())
+# creaturePage = pd.read_json(rawJson)
+
+
+# config = dotenv_values("venv/config/.env")
+# clientId = config["CLIENT_ID"]
+# clientSecret = config["CLIENT_SECRET"]
+# apiClient = BlizzardApi(client_id=clientId, client_secret=clientSecret)
+# categories = apiClient.wow.game_data.get_quest_types_index(region='us', locale='en_US')
+# rawJson = json.dumps(categories, indent=4)
+# with open("venv/data_indices/wowQuestTypesIndex.json", "w") as outfile:
+#     outfile.write(rawJson)
+
 print("Request success!")
