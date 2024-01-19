@@ -12,7 +12,7 @@ i = 1
 finalTable = pd.DataFrame()
 while True:
 
-    url ='https://us.api.blizzard.com/data/wow/search/item?namespace=static-us&name.en_US=&orderby=id&_page=1&&id=[%s,]&_pageSize=1000&access_token=USiPyLgZJdM8BjsDShmlXdkOhfBhagU5D0' % i
+    url ='https://us.api.blizzard.com/data/wow/search/spell?namespace=static-us&_pageSize=1000&id=[%s,]&name.en_US=&orderby=id&_page=1&access_token=USmqlGVzEEvrmtg0qQdVGeBR1zXQ3twvGC' % i
     request = requests.get(url=url)
     rawJson = json.dumps(request.json())
     itemPage = pd.read_json(rawJson)
@@ -22,7 +22,7 @@ while True:
         i = itemPage['results'][999]['data']['id']
     except:
         break
-finalTable.to_excel('~/Documents/wowApiItem.xlsx')
+finalTable.to_excel('~/Documents/wowApiSpells.xlsx')
 
 
 # url ='https://us.api.blizzard.com/data/wow/search/creature?namespace=static-us&name.en_US=&orderby=id:desc&_page=%s&access_token=USiPyLgZJdM8BjsDShmlXdkOhfBhagU5D0' % i
@@ -35,9 +35,9 @@ finalTable.to_excel('~/Documents/wowApiItem.xlsx')
 # clientId = config["CLIENT_ID"]
 # clientSecret = config["CLIENT_SECRET"]
 # apiClient = BlizzardApi(client_id=clientId, client_secret=clientSecret)
-# categories = apiClient.wow.game_data.get_item_set(item_set_id=757, region='us', locale='en_US')
+# categories = apiClient.wow.game_data.get_quest_types_index(region='us', locale='en_US')
 # rawJson = json.dumps(categories, indent=4)
-# with open("venv/raw_jsons/wowItemSet757.json", "w") as outfile:
+# with open("venv/data_indices/wowQuestTypesIndex.json", "w") as outfile:
 #     outfile.write(rawJson)
 
 print("Request success!")
