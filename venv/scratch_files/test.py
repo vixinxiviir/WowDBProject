@@ -8,21 +8,21 @@ from dotenv import dotenv_values
 
 # This is a test line for SmartGit
 
-i = 1
-finalTable = pd.DataFrame()
-while True:
+# i = 1
+# finalTable = pd.DataFrame()
+# while True:
 
-    url ='https://us.api.blizzard.com/data/wow/search/spell?namespace=static-us&_pageSize=1000&id=[%s,]&name.en_US=&orderby=id&_page=1&access_token=USmqlGVzEEvrmtg0qQdVGeBR1zXQ3twvGC' % i
-    request = requests.get(url=url)
-    rawJson = json.dumps(request.json())
-    itemPage = pd.read_json(rawJson)
-    finalTable = pd.concat([finalTable, itemPage])
-    print(len(finalTable))
-    try:
-        i = itemPage['results'][999]['data']['id']
-    except:
-        break
-finalTable.to_excel('~/Documents/wowApiSpells.xlsx')
+#     url ='https://us.api.blizzard.com/data/wow/search/spell?namespace=static-us&_pageSize=1000&id=[%s,]&name.en_US=&orderby=id&_page=1&access_token=USmqlGVzEEvrmtg0qQdVGeBR1zXQ3twvGC' % i
+#     request = requests.get(url=url)
+#     rawJson = json.dumps(request.json())
+#     itemPage = pd.read_json(rawJson)
+#     finalTable = pd.concat([finalTable, itemPage])
+#     print(len(finalTable))
+#     try:
+#         i = itemPage['results'][999]['data']['id']
+#     except:
+#         break
+# finalTable.to_excel('~/Documents/wowApiSpells.xlsx')
 
 
 # url ='https://us.api.blizzard.com/data/wow/search/creature?namespace=static-us&name.en_US=&orderby=id:desc&_page=%s&access_token=USiPyLgZJdM8BjsDShmlXdkOhfBhagU5D0' % i
@@ -31,13 +31,13 @@ finalTable.to_excel('~/Documents/wowApiSpells.xlsx')
 # creaturePage = pd.read_json(rawJson)
 
 
-# config = dotenv_values("venv/config/.env")
-# clientId = config["CLIENT_ID"]
-# clientSecret = config["CLIENT_SECRET"]
-# apiClient = BlizzardApi(client_id=clientId, client_secret=clientSecret)
-# categories = apiClient.wow.game_data.get_quest_types_index(region='us', locale='en_US')
-# rawJson = json.dumps(categories, indent=4)
-# with open("venv/data_indices/wowQuestTypesIndex.json", "w") as outfile:
-#     outfile.write(rawJson)
+config = dotenv_values("venv/config/.env")
+clientId = config["CLIENT_ID"]
+clientSecret = config["CLIENT_SECRET"]
+apiClient = BlizzardApi(client_id=clientId, client_secret=clientSecret)
+categories = apiClient.wow.game_data.get_creature(creature_id=42722, region='us', locale='en_US')
+rawJson = json.dumps(categories)
+rawLoad = json.loads(rawJson)
+testDf = pd.Series(rawLoad)
 
 print("Request success!")
