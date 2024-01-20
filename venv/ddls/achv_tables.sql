@@ -5,7 +5,7 @@ CREATE SCHEMA achievements;
 --Achievements Table
 CREATE TABLE tbl_achievements(
     achievement_id INT PRIMARY KEY,
-    achievement_category_id INT FOREIGN KEY,
+    achievement_category_id INT REFERENCES achievements.tbl_achievement_categories(achievement_category_id),
     achievement_name VARCHAR(512),
     achievement_description VARCHAR(512),
     achievement_points INT,
